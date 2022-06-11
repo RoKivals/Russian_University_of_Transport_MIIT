@@ -9,7 +9,7 @@ int main()
   Time Time1(3, 15);
   try
   {
-	std::cout << TimeToSeconds(Time1) << std::endl;
+	std::cout << TimeToSeconds<int>(Time1) << std::endl;
   }
   catch (int)
   {
