@@ -7,9 +7,9 @@ using namespace std;
 
 void menu() {
   int choice;
-  std::cout << "Åñëè õîòèòå ñëîæèòü ÷èñëà, èñïîëüçóÿ êëàññ Array, íàæìèòå 1.\n";
-  std::cout << "Åñëè õîòèòå ñëîæèòü ÷èñëà äåíåæíîãî ôîðìàòà, íàæìèòå 2.\n";
-  std::cout << "Åñëè õîòèòå ñëîæèòü ñëîæèòü áèòîâûå ñòðîêè, íàæìèòå 3.\n";
+  std::cout << "Ð•ÑÐ»Ð¸ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ ÑÐ»Ð¾Ð¶Ð¸Ñ‚ÑŒ Ñ‡Ð¸ÑÐ»Ð°, Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·ÑƒÑ ÐºÐ»Ð°ÑÑ Array, Ð½Ð°Ð¶Ð¼Ð¸Ñ‚Ðµ 1.\n";
+  std::cout << "Ð•ÑÐ»Ð¸ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ ÑÐ»Ð¾Ð¶Ð¸Ñ‚ÑŒ Ñ‡Ð¸ÑÐ»Ð° Ð´ÐµÐ½ÐµÐ¶Ð½Ð¾Ð³Ð¾ Ñ„Ð¾Ñ€Ð¼Ð°Ñ‚Ð°, Ð½Ð°Ð¶Ð¼Ð¸Ñ‚Ðµ 2.\n";
+  std::cout << "Ð•ÑÐ»Ð¸ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ ÑÐ»Ð¾Ð¶Ð¸Ñ‚ÑŒ ÑÐ»Ð¾Ð¶Ð¸Ñ‚ÑŒ Ð±Ð¸Ñ‚Ð¾Ð²Ñ‹Ðµ ÑÑ‚Ñ€Ð¾ÐºÐ¸, Ð½Ð°Ð¶Ð¼Ð¸Ñ‚Ðµ 3.\n";
   std::cin >> choice;
   try {
 	if (choice == 1) {
@@ -17,7 +17,7 @@ void menu() {
 	  ar1 = (unsigned char *) "2231280";
 	  auto *ar2 = new unsigned char[max_size]{0};
 	  ar2 = (unsigned char *) "911234";
-	  std::cout << "Ñóììà äâóõ ìàññèâîâ:\n";
+	  std::cout << "Ð¡ÑƒÐ¼Ð¼Ð° Ð´Ð²ÑƒÑ… Ð¼Ð°ÑÑÐ¸Ð²Ð¾Ð²:\n";
 	  Array arr1(ar1, 7), arr2(ar2, 6), ar_res;
 	  ar_res = arr1 + arr2;
 	  std::cout << " ";
@@ -43,7 +43,7 @@ void menu() {
 	  ar1 = (unsigned char *) "123400";
 	  auto *ar2 = new unsigned char[max_size]{0};
 	  ar2 = (unsigned char *) "245600";
-	  cout << "Ñóììà äâóõ äåíåæíûõ ñóìì:\n\n";
+	  cout << "Ð¡ÑƒÐ¼Ð¼Ð° Ð´Ð²ÑƒÑ… Ð´ÐµÐ½ÐµÐ¶Ð½Ñ‹Ñ… ÑÑƒÐ¼Ð¼:\n\n";
 	  Money mon1(ar1, 6), mon2(ar2, 6), mon_res;
 	  mon_res = mon1 + mon2;
 	  cout << " ";
@@ -71,7 +71,7 @@ void menu() {
 	  ar1 = (unsigned char *) "1010101";
 	  auto *ar2 = new unsigned char[max_size]{0};
 	  ar2 = (unsigned char *) "1000100";
-	  cout << "Ñóììà äâóõ áèòîâûõ ñòðîê:\n\n";
+	  cout << "Ð¡ÑƒÐ¼Ð¼Ð° Ð´Ð²ÑƒÑ… Ð±Ð¸Ñ‚Ð¾Ð²Ñ‹Ñ… ÑÑ‚Ñ€Ð¾Ðº:\n\n";
 	  BitString bs1(ar1, 7), bs2(ar2, 7), bs3;
 	  cout << " ";
 	  for (int i = 0; i < bs1.get_size(); i++) {
@@ -92,7 +92,7 @@ void menu() {
 	  }
 	  cout << endl;
 	} else {
-	  throw string("Îøèáêà! Ïîâòîðèòå ââîä!");
+	  throw string("ÐžÑˆÐ¸Ð±ÐºÐ°! ÐŸÐ¾Ð²Ñ‚Ð¾Ñ€Ð¸Ñ‚Ðµ Ð²Ð²Ð¾Ð´!");
 	}
   }
   catch (string &m) {
