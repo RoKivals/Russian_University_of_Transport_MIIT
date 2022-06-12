@@ -9,7 +9,8 @@ void menu() {
   int choice;
   std::cout << "Если хотите сложить числа, используя класс Array, нажмите 1.\n";
   std::cout << "Если хотите сложить числа денежного формата, нажмите 2.\n";
-  std::cout << "Если хотите сложить сложить битовые строки, нажмите 3.\n";
+  std::cout << "Если хотите сложить битовые строки, нажмите 3.\n";
+  std::cout << "Если хотите сложить две символьные строки, нажмите 4.\n";
   std::cin >> choice;
   try {
 	if (choice == 1) {
@@ -91,7 +92,32 @@ void menu() {
 		cout << bs3[i];
 	  }
 	  cout << endl;
-	} else {
+	} //else if (choice == 4) {
+//	  auto *ar1 = new unsigned char[msize]{0};
+//	  ar1 = (unsigned char *) "n0b01o1";
+//	  auto *ar2 = new unsigned char[msize]{0};
+//	  ar2 = (unsigned char *) "100acl0";
+//	  cout << "Сумма двух строк:\n\n";
+//	  String str1(ar1, 7), str2(ar2, 7), str_res;
+//	  str_res = str1 + str2;
+//	  cout << " ";
+//	  for (int i = 0; i < str1.get_size(); i++) {
+//		cout << str1[i];
+//	  }
+//	  cout << endl << "+\n ";
+//	  for (int i = 0; i < str2.get_size(); i++) {
+//		cout << str2[i];
+//	  }
+//	  cout << endl << " ";
+//	  for (int i = 1; i < str_res.get_size(); i++) {
+//		cout << "-";
+//	  }
+//	  cout << endl << " ";
+//	  for (int i = 1; i < str_res.get_size(); i++) {
+//		cout << str_res[i];
+//	  }
+//	  cout << endl;
+	else {
 	  throw string("Ошибка! Повторите ввод!");
 	}
   }
@@ -99,7 +125,7 @@ void menu() {
 	cout << m << endl << endl;
 	menu();
   }
-  catch (logic_error& le) {
+  catch (logic_error &le) {
 	cout << le.what() << endl;
   }
 }

@@ -4,7 +4,7 @@
 #include <algorithm>
 #include <iostream>
 
-const int max_size = 13;
+static const int max_size = 255; // заглушка пока что
 
 class Array {
  protected:
