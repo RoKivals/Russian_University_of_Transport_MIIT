@@ -13,6 +13,7 @@ void menu() {
   std::cout << "Если хотите сложить две символьные строки, нажмите 4.\n";
   std::cin >> choice;
   try {
+	static int max_size = 255; // заглушка до реализации ввода с клавиатуры
 	if (choice == 1) {
 	  auto *ar1 = new unsigned char[max_size]{0};
 	  ar1 = (unsigned char *) "2231280";
@@ -73,23 +74,23 @@ void menu() {
 	  auto *ar2 = new unsigned char[max_size]{0};
 	  ar2 = (unsigned char *) "1000100";
 	  cout << "Сумма двух битовых строк:\n\n";
-	  BitString bs1(ar1, 7), bs2(ar2, 7), bs3;
+	  BitString bs1(ar1, 7), bs2(ar2, 7), bs_res;
+	  bs_res = bs1 + bs2;
 	  cout << " ";
 	  for (int i = 0; i < bs1.get_size(); i++) {
-		cout << ar1[i];
+		cout << bs1[i];
 	  }
 	  cout << endl << "+\n ";
 	  for (int i = 0; i < bs2.get_size(); i++) {
-		cout << ar2[i];
+		cout << bs2[i];
 	  }
 	  cout << endl << " ";
-	  for (int i = 1; i < max_size; i++) {
+	  for (int i = 0; i < bs_res.get_size(); i++) {
 		cout << "-";
 	  }
 	  cout << endl << " ";
-	  bs3 = bs1 + bs2;
-	  for (int i = 0; i < bs3.get_size(); i++) {
-		cout << bs3[i];
+	  for (int i = 0; i < bs_res.get_size(); i++) {
+		cout << bs_res[i];
 	  }
 	  cout << endl;
 	} //else if (choice == 4) {

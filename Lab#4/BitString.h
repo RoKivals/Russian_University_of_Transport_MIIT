@@ -4,6 +4,8 @@
 #include <iostream>
 
 class BitString : public Array {
+ protected:
+  static const int max_size = 13;
  public:
   BitString();
   explicit BitString(const unsigned char *, unsigned int = 0);

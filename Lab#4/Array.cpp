@@ -1,27 +1,27 @@
 #include "Array.h"
 
+// Конструктор без параметров будет создавать массив с размером 0 и
+// выделенной памятью для максимального кол-ва элементов.
 Array::Array() {
   size_ = 0;
-  arr_ = new unsigned char[max_size]{0};
+  arr_ = new unsigned char[max_size];
+  std::fill(arr_, arr_ + max_size, '0');
 }
 
-// Реализуем конструктор Array
-Array::Array(const unsigned char *arr, unsigned int size) {
-  TODO: "Переделать под выделение передаваемого размера";
-  // Не жалеем память от слова совсем и сразу выделяем память на максимальное возможный размер массива.
-  arr_ = new unsigned char[max_size];
-  // Заполняем массив по умолчанию нулями.
-  std::fill(arr_, arr_ + max_size, '0');
-
-  // Если передаваемый массив не создан или размер, переданного массива равен 0, или больше максимума,
-  // то размер массива равен 0.
-  if (arr == nullptr || size == 0 || size > max_size) {
-	size_ = 0;
-  } else {
+// Реализуем конструктор Array от двух параметров (массива данных и размера)
+Array::Array(const unsigned char *arr, int size) {
+  // Если массив данных создан, а размер подходит по условиям, то изменяем размер объекта
+  // и передаём в него все элементы из массива
+  if (size >= 0 && size < max_size && arr != nullptr) {
 	size_ = size;
+	arr_ = new unsigned char[size_];
 	for (unsigned int x = 0; x < size_; x++) {
 	  this->arr_[x] = arr[x];
 	}
+  } // Если одно из условий не выполнено, устанавливаем размер, равный 0 и выделяем память для внутреннего массива
+  else {
+	size_ = 0;
+	arr_ = new unsigned char[size_];
   }
 }
 

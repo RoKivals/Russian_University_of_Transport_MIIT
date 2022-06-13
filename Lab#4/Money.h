@@ -5,7 +5,7 @@
 
 class Money : public Array {
  protected:
-  //static const int max_size = 7;
+  static const int max_size = 7;
  public:
   Money();
   explicit Money(const unsigned char *, unsigned int = 0);

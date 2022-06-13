@@ -14,7 +14,7 @@ Money &Money::operator+(Money &right) {
   // Итоговый размер массива
   int itog_size = std::max(this->size_, right.size_);
   // индекс, на котором один из двух массивов начинается, если они разные
-  int fir_stop = right.size_ - this->size_;
+  int fir_stop = itog_size - std::min(this->size_, right.size_);
   // Выделяем память для массива, хранящего суммы элементов
   auto *res = new unsigned char[itog_size];
   // Заполняем массив нулями
@@ -64,20 +64,28 @@ Money &Money::operator+(Money &right) {
   return *itog;
 }
 
+// Конструктор без параметров создаёт объект с нулевым размером,
+// но массивом выделенным для максимального кол-ва элементов.
 Money::Money() {
   size_ = 0;
-  arr_ = new unsigned char[max_size]{0};
+  arr_ = new unsigned char[max_size];
+  std::fill(arr_, arr_ + max_size, '0');
 }
 
+
 Money::Money(const unsigned char *arr, unsigned int size) {
-  arr_ = new unsigned char[max_size]{0};
-  if (arr == nullptr || size > max_size || size < 0) {
-	size_ = 0;
-  } else {
+  // Если массив данных создан, а размер подходит по условиям, то изменяем размер объекта
+  // и передаём в него все элементы из массива
+  if (size >= 0 && size < max_size && arr != nullptr) {
 	size_ = size;
+	arr_ = new unsigned char[size_];
 	for (unsigned int x = 0; x < size_; x++) {
 	  this->arr_[x] = arr[x];
 	}
+  } // Если одно из условий не выполнено, устанавливаем размер, равный 0 и выделяем память для внутреннего массива
+  else {
+	size_ = 0;
+	arr_ = new unsigned char[size_];
   }
 }
 
