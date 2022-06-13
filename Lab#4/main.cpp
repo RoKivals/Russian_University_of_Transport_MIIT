@@ -41,11 +41,11 @@ void menu() {
 	  cout << endl;
 	} else if (choice == 2) {
 	  auto *ar1 = new unsigned char[max_size]{0};
-	  ar1 = (unsigned char *) "123400";
+	  ar1 = (unsigned char *) "23485";
 	  auto *ar2 = new unsigned char[max_size]{0};
-	  ar2 = (unsigned char *) "245600";
+	  ar2 = (unsigned char *) "245649";
 	  cout << "Сумма двух денежных сумм:\n\n";
-	  Money mon1(ar1, 6), mon2(ar2, 6), mon_res;
+	  Money mon1(ar1, 5), mon2(ar2, 6), mon_res;
 	  mon_res = mon1 + mon2;
 	  cout << " ";
 	  for (int i = 0; i < mon1.get_size(); i++) {
@@ -55,16 +55,16 @@ void menu() {
 	  cout << endl << "+\n ";
 	  for (int i = 0; i < mon2.get_size(); i++) {
 		cout << ar2[i];
-		if (i == mon1.get_size() - 3) cout << " ";
+		if (i == mon2.get_size() - 3) cout << " ";
 	  }
 	  cout << endl << " ";
-	  for (int i = 1; i < max_size; i++) {
+	  for (int i = 1; i < mon_res.get_size(); i++) {
 		cout << "-";
 	  }
 	  cout << endl << " ";
 	  for (int i = 0; i < mon_res.get_size(); i++) {
 		cout << mon_res[i];
-		if (i == mon1.get_size() - 3) cout << " ";
+		if (i == mon_res.get_size() - 3) cout << " ";
 	  }
 	  cout << endl;
 	} else if (choice == 3) {
@@ -93,30 +93,30 @@ void menu() {
 	  }
 	  cout << endl;
 	} //else if (choice == 4) {
-//	  auto *ar1 = new unsigned char[msize]{0};
-//	  ar1 = (unsigned char *) "n0b01o1";
-//	  auto *ar2 = new unsigned char[msize]{0};
-//	  ar2 = (unsigned char *) "100acl0";
-//	  cout << "Сумма двух строк:\n\n";
-//	  String str1(ar1, 7), str2(ar2, 7), str_res;
-//	  str_res = str1 + str2;
-//	  cout << " ";
-//	  for (int i = 0; i < str1.get_size(); i++) {
-//		cout << str1[i];
-//	  }
-//	  cout << endl << "+\n ";
-//	  for (int i = 0; i < str2.get_size(); i++) {
-//		cout << str2[i];
-//	  }
-//	  cout << endl << " ";
-//	  for (int i = 1; i < str_res.get_size(); i++) {
-//		cout << "-";
-//	  }
-//	  cout << endl << " ";
-//	  for (int i = 1; i < str_res.get_size(); i++) {
-//		cout << str_res[i];
-//	  }
-//	  cout << endl;
+// auto *ar1 = new unsigned char[msize]{0};
+// ar1 = (unsigned char *) "n0b01o1";
+// auto *ar2 = new unsigned char[msize]{0};
+// ar2 = (unsigned char *) "100acl0";
+// cout << "????? ???? ?????:\n\n";
+// String str1(ar1, 7), str2(ar2, 7), str_res;
+// str_res = str1 + str2;
+// cout << " ";
+// for (int i = 0; i < str1.get_size(); i++) {
+//cout << str1[i];
+// }
+// cout << endl << "+\n ";
+// for (int i = 0; i < str2.get_size(); i++) {
+//cout << str2[i];
+// }
+// cout << endl << " ";
+// for (int i = 1; i < str_res.get_size(); i++) {
+//cout << "-";
+// }
+// cout << endl << " ";
+// for (int i = 1; i < str_res.get_size(); i++) {
+//cout << str_res[i];
+// }
+// cout << endl;
 	else {
 	  throw string("Ошибка! Повторите ввод!");
 	}

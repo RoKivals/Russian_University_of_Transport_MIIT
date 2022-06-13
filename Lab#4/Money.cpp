@@ -11,73 +11,54 @@
 // => просто создать поля long и char - не выполнить переопределение оператора индексации в этом классе.
 
 Money &Money::operator+(Money &right) {
-  int cent =
-	  (this->arr_[size_ - 2] - '0') * 10 + (this->arr_[size_ - 1] - '0') + (right.arr_[right.size_ - 2] - '0') * 10
-		  + (right.arr_[right.size_ - 1] - '0');
-  auto *res = new unsigned char[std::max(this->size_, right.size_)]{0};
-  unsigned int itog_size;
-  // Если их размеры равны
-  if (this->size_ == right.size_) {
-	itog_size = size_;
-	for (int x = right.size_ - 3; x >= 0; x--) {
-	  if ((x == 0 && (this->arr_[x] - '0') + (right.arr_[x] - '0') >= 10)) {
-		itog_size++;
-		res[x] = this->arr_[x] + right.arr_[x] - 58;
-		for (int i = itog_size - 1; i > 0; i--) {
-		  res[i] = res[i - 1];
-		}
-		res[0] = 1;
-	  } else if ((this->arr_[x] - '0') + (right.arr_[x] - '0') >= 10) {
-		res[x - 1] = 1;
-		res[x] += this->arr_[x] + right.arr_[x] - 58;
-	  } else {
-		res[x] += this->arr_[x] + right.arr_[x] - '0';
-	  }
-	}
-	res[itog_size - 3] += cent / 100;
-	res[itog_size - 2] = cent % 100 / 10 + '0';
-	res[itog_size - 1] = cent % 10 + '0';
-  } else if (right.size_ > this->size_) { // Если правое число больше левого
-	// индекс, на котором один из двух массивов закончится
-	unsigned int fir_stop = right.size_ - this->size_;
-	// Индекс, на котором закончатся элементы в оставшемся массиве
-	unsigned int sec_stop = size_ - 2;
+  // Итоговый размер массива
+  int itog_size = std::max(this->size_, right.size_);
+  // индекс, на котором один из двух массивов начинается, если они разные
+  int fir_stop = right.size_ - this->size_;
+  // Выделяем память для массива, хранящего суммы элементов
+  auto *res = new unsigned char[itog_size];
+  // Заполняем массив нулями
+  std::fill(res, res + itog_size, '0');
+  if (right.size_ >= this->size_) {
+	// Если правое число больше левого
 	for (int x = 0; x < fir_stop; x++) {
 	  res[x] = right.arr_[x];
 	}
-	for (int x = sec_stop; x >= fir_stop; x--) {
-	  if ((this->arr_[x - fir_stop] - '0') + (right.arr_[x] - '0') >= 10) {
-		res[x - 1] += 1;
-		res[x] = this->arr_[x - fir_stop] + right.arr_[x] - 58;
+	for (int x = itog_size - 1; x >= fir_stop; --x) {
+	  if ((x == 0 && (this->arr_[x - fir_stop] - '0') + (right.arr_[x] - '0') >= 10)) {
+		itog_size++;
+		res[x] += this->arr_[x - fir_stop] + right.arr_[x] - 106;
+		for (int i = itog_size - 1; i > 0; i--) {
+		  res[i] = res[i - 1];
+		}
+		res[0] = '1';
+	  } else if ((this->arr_[x - fir_stop] - '0') + (right.arr_[x] - '0') >= 10) {
+		res[x - 1] = '1';
+		res[x] += this->arr_[x - fir_stop] + right.arr_[x] - 106;
 	  } else {
-		res[x] = this->arr_[x - fir_stop] + right.arr_[x] - '0';
+		res[x] += this->arr_[x - fir_stop] + right.arr_[x] - 96;
 	  }
 	}
-	itog_size = right.size_;
-	res[itog_size - 3] += cent / 100;
-	res[itog_size - 2] = cent % 100 / 10 + '0';
-	res[itog_size - 1] = cent % 10 + '0';
   } else {
-	// индекс, на котором один из двух массивов закончится
-	unsigned int fir_stop = this->size_ - right.size_;
-	// Индекс, на котором закончатся элементы в оставшемся массиве
-	unsigned int sec_stop = right.size_ - 2;
+	// Если левое число больше правого
 	for (int x = 0; x < fir_stop; x++) {
-	  res[x] = arr_[x];
+	  res[x] = this->arr_[x];
 	}
-	for (int x = sec_stop; x >= fir_stop; x--) {
-	  if ((this->arr_[x] - '0') + (right.arr_[x - fir_stop] - '0') >= 10) {
-		res[x - 1] += 1;
-		res[x] = this->arr_[x] + right.arr_[x - fir_stop] - 58;
+	for (int x = itog_size - 1; x >= fir_stop; x--) {
+	  if ((x == 0 && (this->arr_[x] - '0') + (right.arr_[x - fir_stop] - '0') >= 10)) {
+		itog_size++;
+		res[x] += this->arr_[x] + right.arr_[x - fir_stop] - 106;
+		for (int i = itog_size - 1; i > 0; i--) {
+		  res[i] = res[i - 1];
+		}
+		res[0] = '1';
+	  } else if ((this->arr_[x] - '0') + (right.arr_[x - fir_stop] - '0') >= 10) {
+		res[x - 1] = '1';
+		res[x] += this->arr_[x] + right.arr_[x - fir_stop] - 106;
 	  } else {
-		res[x] = this->arr_[x] + right.arr_[x - fir_stop] - '0';
+		res[x] += this->arr_[x] + right.arr_[x - fir_stop] - 96;
 	  }
 	}
-	itog_size = size_;
-	res[itog_size - 3] += cent / 100;
-	res[itog_size - 2] = cent % 100 / 10 + '0';
-	res[itog_size - 1] = cent % 10 + '0';
-
   }
   auto itog = new Money(res, itog_size);
   return *itog;

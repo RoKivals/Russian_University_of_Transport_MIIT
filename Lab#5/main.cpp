@@ -13,7 +13,7 @@ int main()
   }
   catch (int)
   {
-	std::cout << "Îøèáêà âõîäíûõ äàííûõ!" << std::endl;
+	std::cout << "ĞÑˆĞ¸Ğ±ĞºĞ° Ğ²Ñ…Ğ¾Ğ´Ğ½Ñ‹Ñ… Ğ´Ğ°Ğ½Ğ½Ñ‹Ñ…!" << std::endl;
   }
 
   try
@@ -22,7 +22,7 @@ int main()
   }
   catch (int m)
   {
-	std::cout << "Îøèáêà âõîäíûõ äàííûõ! Êîä îøèáêè " << m << std::endl;
+	std::cout << "ĞÑˆĞ¸Ğ±ĞºĞ° Ğ²Ñ…Ğ¾Ğ´Ğ½Ñ‹Ñ… Ğ´Ğ°Ğ½Ğ½Ñ‹Ñ…! ĞšĞ¾Ğ´ Ğ¾ÑˆĞ¸Ğ±ĞºĞ¸ " << m << std::endl;
   }
 
   try
@@ -31,7 +31,7 @@ int main()
   }
   catch (std::invalid_argument e)
   {
-	std::cout << "Îøèáêà òèïà: " << e.what() << std::endl;
+	std::cout << "ĞÑˆĞ¸Ğ±ĞºĞ° Ñ‚Ğ¸Ğ¿Ğ°: " << e.what() << std::endl;
   }
 
   try
@@ -40,7 +40,7 @@ int main()
   }
   catch (MyEmptyException)
   {
-	std::cout << "Îøèáêà âõîäíûõ äàííûõ! Èñêëş÷åíèå òèïà ïóñòîé êëàññ" << std::endl;
+	std::cout << "ĞÑˆĞ¸Ğ±ĞºĞ° Ğ²Ñ…Ğ¾Ğ´Ğ½Ñ‹Ñ… Ğ´Ğ°Ğ½Ğ½Ñ‹Ñ…! Ğ˜ÑĞºĞ»ÑÑ‡ĞµĞ½Ğ¸Ğµ Ñ‚Ğ¸Ğ¿Ğ° Ğ¿ÑƒÑÑ‚Ğ¾Ğ¹ ĞºĞ»Ğ°ÑÑ" << std::endl;
   }
 
   try
@@ -49,7 +49,7 @@ int main()
   }
   catch (MyTimeException e)
   {
-	std::cout << "Ñîîáùåíèå îøèáêè: " << e.message << std::endl;
+	std::cout << "Ğ¡Ğ¾Ğ¾Ğ±Ñ‰ĞµĞ½Ğ¸Ğµ Ğ¾ÑˆĞ¸Ğ±ĞºĞ¸: " << e.message << std::endl;
   }
 
   try
@@ -58,7 +58,7 @@ int main()
   }
   catch (MyTimeSonException e)
   {
-	std::cout << "Îøèáêà âõîäíûõ äàííûõ! Èñêëş÷åíèå òèïà íàñëåäñòâåííîãî êëàññà: " << e.what() << std::endl;
+	std::cout << "ĞÑˆĞ¸Ğ±ĞºĞ° Ğ²Ñ…Ğ¾Ğ´Ğ½Ñ‹Ñ… Ğ´Ğ°Ğ½Ğ½Ñ‹Ñ…! Ğ˜ÑĞºĞ»ÑÑ‡ĞµĞ½Ğ¸Ğµ Ñ‚Ğ¸Ğ¿Ğ° Ğ½Ğ°ÑĞ»ĞµĞ´ÑÑ‚Ğ²ĞµĞ½Ğ½Ğ¾Ğ³Ğ¾ ĞºĞ»Ğ°ÑÑĞ°: " << e.what() << std::endl;
   }
 }
 
